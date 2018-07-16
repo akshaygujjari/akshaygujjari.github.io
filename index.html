@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="C:\Users\akshay.gujjari\Desktop\WEB FILES\Passport Pic.ico" style="border-radius: 200px"
+    />
+    <title>TodoList</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+
+    <style>
+        * {
+            outline: none
+        }
+
+        .lable {
+
+            text-align: center;
+            font-size: 20px;
+            font-family: verdana;
+            padding: 5px;
+        }
+
+        #todo {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            max-width: 700px;
+            border-radius: 200px;
+            border: 2px solid rgb(228, 18, 3)
+        }
+
+        .button_1 {
+            background-color: #212529;
+            border: none;
+            color: white;
+            padding: 12px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+            position: relative;
+            border-radius: 12px;
+        }
+
+        .todoTrash {
+            width: 150px;
+            text-align: center;
+            margin: 0 auto;
+            background-color: #212529;
+            border: none;
+            color: white;
+        }
+
+        .DUFFER {
+            color: antiquewhite;
+        }
+
+        .fa {
+            border-radius: 5px;
+            margin: 5px;
+            background-color: #212529;
+            border: none;
+            color: white;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var todolists = [];
+            var id;
+            Init(todolists)
+            var z;
+            $('.button_1').on('click', () => {
+                //   add children
+
+                var todoList = {
+                    title: '',
+                    id: ''
+                }
+                debugger
+                todoList.title = $('#todo').val();
+                if (todoList.title == "") {
+                    alert("Enter Task Descripton");
+                } else {
+                    todoList.id = todolists.length + 1;
+                    todolists.push(todoList)
+                    updateTodo(todoList);
+                    var list = document.createElement('li');
+                    list.className = "DUFFER"
+                    list.innerText = todoList.title
+                    list.id = todoList.id
+                    $('#lists').append(list);
+                    $('#todo').val = ""
+
+                    var button_2 = document.createElement('button');
+                    button_2.className = "fa fa-trash";
+                    button_2.id = todoList.id;
+                    var id = todoList.id;
+                    button_2.setAttribute('onclick', "removeList(id)");
+                    $('#lists').append(button_2);
+
+                    var button_3 = document.createElement('button');
+                    button_3.className = "fa fa-edit";
+                    button_3.id = todoList.id;
+                    button_3.setAttribute('onclick', "editList(id)");
+                    $('#lists').append(button_3);
+                    $('#todo').val("");
+                }
+            });
+        })
+        debugger;
+
+        function Init(todolists) {
+            localStorage.getItem('TodoList', todolists)
+            debugger
+        }
+
+        function updateTodo(todo) {
+            var x = [];
+            x.push(todo);
+            localStorage.setItem('TodoList', x)
+        }
+
+        function removeList(id) {
+            debugger;
+            var z = document.getElementById(id).id;
+            var x = [];
+            localStorage.getItem('TodoList', x)
+            y = '#'+ id ;
+            $("li").remove(y);
+            $("button").remove(y);
+        }
+
+function editList(id) {
+
+    
+}
+
+    </script>
+</head>
+
+<body style="background-color: blue; text-align:center">
+    <lable class="lable">
+        <h3>To Do List</h3>
+        <hr>
+        <br>
+    </lable>
+    <div>
+        <input type="text" id="todo" placeholder="Enter Task Descripton">
+        <button class="button_1">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+    <div>
+        <ul id="lists" style="list-style: none;">
+
+        </ul>
+    </div>
+</body>
+
+</html>
