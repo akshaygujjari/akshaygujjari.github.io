@@ -2,171 +2,527 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="C:\Users\akshay.gujjari\Desktop\WEB FILES\Passport Pic.ico" style="border-radius: 200px"
-    />
-    <title>TodoList</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <style>
-        * {
-            outline: none
-        }
+  <title>Akshay Gujjari</title>
 
-        .lable {
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-            text-align: center;
-            font-size: 20px;
-            font-family: verdana;
-            padding: 5px;
-        }
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-        #todo {
-            position: relative;
-            display: inline-block;
-            padding: 10px 20px;
-            max-width: 700px;
-            border-radius: 200px;
-            border: 2px solid rgb(228, 18, 3)
-        }
+  <!-- Custom styles for this template -->
+  <link href="css/agency.min.css" rel="stylesheet">
 
-        .button_1 {
-            background-color: #212529;
-            border: none;
-            color: white;
-            padding: 12px 15px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 12px;
-            cursor: pointer;
-            position: relative;
-            border-radius: 12px;
-        }
-
-        .todoTrash {
-            width: 150px;
-            text-align: center;
-            margin: 0 auto;
-            background-color: #212529;
-            border: none;
-            color: white;
-        }
-
-        .DUFFER {
-            color: antiquewhite;
-        }
-
-        .fa {
-            border-radius: 5px;
-            margin: 5px;
-            background-color: #212529;
-            border: none;
-            color: white;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-            var todolists = [];
-            var id;
-            Init(todolists)
-            var z;
-            $('.button_1').on('click', () => {
-                //   add children
-
-                var todoList = {
-                    title: '',
-                    id: ''
-                }
-                debugger
-                todoList.title = $('#todo').val();
-                if (todoList.title == "") {
-                    alert("Enter Task Descripton");
-                } else {
-                    todoList.id = todolists.length + 1;
-                    todolists.push(todoList)
-                    updateTodo(todoList);
-                    var list = document.createElement('li');
-                    list.className = "DUFFER"
-                    list.innerText = todoList.title
-                    list.id = todoList.id
-                    $('#lists').append(list);
-                    $('#todo').val = ""
-
-                    var button_2 = document.createElement('button');
-                    button_2.className = "fa fa-trash";
-                    button_2.id = todoList.id;
-                    var id = todoList.id;
-                    button_2.setAttribute('onclick', "removeList(id)");
-                    $('#lists').append(button_2);
-
-                    var button_3 = document.createElement('button');
-                    button_3.className = "fa fa-edit";
-                    button_3.id = todoList.id;
-                    button_3.setAttribute('onclick', "editList(id)");
-                    $('#lists').append(button_3);
-                    $('#todo').val("");
-                }
-            });
-        })
-        debugger;
-
-        function Init(todolists) {
-            localStorage.getItem('TodoList', todolists)
-            debugger
-        }
-
-        function updateTodo(todo) {
-            var x = [];
-            x.push(todo);
-            localStorage.setItem('TodoList', x)
-        }
-
-        function removeList(id) {
-            debugger;
-            var z = document.getElementById(id).id;
-            var x = [];
-            localStorage.getItem('TodoList', x)
-            y = '#'+ id ;
-            $("li").remove(y);
-            $("button").remove(y);
-        }
-
-function editList(id) {
-
-    
-}
-
-    </script>
 </head>
 
-<body style="background-color: blue; text-align:center">
-    <lable class="lable">
-        <h3>To Do List</h3>
-        <hr>
-        <br>
-    </lable>
-    <div>
-        <input type="text" id="todo" placeholder="Enter Task Descripton">
-        <button class="button_1">
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>
-    <div>
-        <ul id="lists" style="list-style: none;">
+<body id="page-top">
 
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Akshay Gujjari</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#team">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="img/Akshay_Gujjari.pdf" target="_blank">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          </li>
         </ul>
+      </div>
     </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-lead-in" style = "margin-top: 10px;"></div>
+        <div class="intro-heading text-uppercase"></div>
+        <br><br><br><br><br><br><br><br>
+         
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">About Me</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <img src="./img/pic.png" alt="profile picture" style="width: 100%;height: 100%;">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <p class="service-heading " style = "text-align: justify;">Hello, I am Akshay Gujjari pursuing a master's in Computer Science specializing in Data Analytics at the State University of New York, Albany. I am currently, working as a Data Analyst for the New York State Department of Environmental Conservation for Forest Health Team. I am seeking full-time opportunities from May, 2020 in the field of Data Science. I am passionate about Machine Learning, Data Analytics, Software Development, Software Engineering, and Product Development. Previously, I have worked as a Data Research Analyst for the Center for Technology in Government on a project named Prototype Development for Water Quality Analysis in New York State. I have 2.5 years of experience working as an Associate Developer for Vistex on the SAP ABAP Module. My work at Vistex allowed me to explore various things alongside programming and that's where I found that it's the analysis of data that keeps me motivated.</p>
+        </div>
+       
+      </div>
+      <p class="service-heading" style = "text-align: justify;">I believe that “Analytics For All” and that is why I have always strived to explore various concepts of Analytics. I believe that there have to be some findings from the data to be analyzed and we should be able to understand the story that the data is trying to tell us. In a nutshell, I have a huge experience of handling many types of Data, such as, structured and unstructured. I possess a strong knowledge of Python, R, SQL, Tableau, ArcGIS, Data Mining, Machine Learning, Data Analytics, Data Visualization, Data Management.</p>
+      <p class="service-heading" style = "text-align: justify;">I am volunteering as a Sports Chair for Indian Student Organization at SUNY Albany. Indian Student Organization is one of the largest Student Organization. My hobbies include playing Volleyball, Cricket, and Swimming.</p>    
+    </div>
+  </section>
+   
+  <!-- Portfolio Grid -->
+  <section class="bg-light page-section" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Education</h2>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/masters.png" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Master of Science</h4>
+            <p class="text-muted">University at Albany, SUNY</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/btech.png" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Bachelor of Technology</h4>
+            <p class="text-muted">Jawaharlal Nehru Technological University</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/highschool.png" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>High School</h4>
+            <p class="text-muted">Vignan Vidyalayam and NRI Academy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="page-section" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Professional Experience</h2>
+          <br> <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="timeline">
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>March, 2016- July, 2018.</h4>
+                  <h4 class="subheading">Associate Developer, Vistex.</h4>
+                </div>
+                <div class="timeline-body">
+
+                </div>
+              </div>
+            </li>
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/2.png" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>May, 2019 - Jan, 2020.</h4>
+                  <h4 class="subheading">Data Research Analyst, CTG UAlbany.</h4>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="img/about/3.jfif" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4>Jan, 2020 - Present.</h4>
+                  <h4 class="subheading">Data Analyst, NYSDEC.</h4>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-inverted">
+              <div class="timeline-image">
+                <h4>Insearch 
+                  <br>for a 
+                  <br>full-time job!!</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-light page-section" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
+            <h4>Kay Garland</h4>
+            <p class="text-muted">Lead Designer</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
+            <h4>Larry Parker</h4>
+            <p class="text-muted">Lead Marketer</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
+            <h4>Diana Pertersen</h4>
+            <p class="text-muted">Lead Developer</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Portfolio Modals -->
+
+  <!-- Modal 1 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                <h2 class="text-uppercase">Masters in Computer Science</h2>
+                <p class="item-intro text-muted"><b>State University of New York, Albany</b></p>
+                <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
+                <p style="text-align: justify;">The Master of Computer Science at University at Albany, State University of New York provided me with knowledge and skills for careers in a broad range of Information Technology, Data Science and many other fields. I believe in "Empowering People Through Information" so the courses that I took in the master's program are with regard to the current trends in technology which helps in empowering me through technology.</p>
+                <p><b>Courses:</b> Data Mining, Machine Learning, Artificial Intelligence, Statistics, Database Systems, Software Engineering.</p>
+                <ul class="list-inline">
+                  <li><b>From:</b> August, 2018 - May, 2020.</li>
+                  <li><b>CGPA:</b> 3.33</li>
+                </ul>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                <h2 class="text-uppercase">B.Tech in Computer Science</h2>
+                <p class="item-intro text-muted"><b>Jawaharlal Nehru Technological University, Hyderabad.</b></p>
+                <p style="text-align: justify;">Being from a mathematical background, this Bachelor of Technology degree from Computer Science has helped me to know the basics of Computers, Programming Languages ( C, C++, JAVA), Management skills, Web Development. This degree helped me to build my foundations in programming and also helped to know how mathematics and computer science are connected. It is during this time where I garnered interest in Technology, Programming, Web Development, and Data Analysis.</p>
+                <p><b>Courses:</b> Object Oriented Programming(Java), Web Technologies, Algorithms and Data Structures, Compiler Design.</p>
+                <ul class="list-inline">
+                  <li><b>From:</b> October, 2012 - May, 2016.</li>
+                  <li><b>Grade:</b> First Class.</li>
+                </ul>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                <h2 class="text-uppercase">High School</h2>
+                <p class="item-intro text-muted"><b> NRI Academy and Vignan Vidyalayam</b></p>
+                <p style="text-align: justify;">I did my schooling from Vignan Vidyalayam, one of the prestigious school from 2000 - 2010 in Hyderabad, India.</p>
+                <p style="text-align: justify;">I attended NRI Academy from 2010 - 2012 to pursue my high school studies in Hyderabad, India.</p>
+                <ul class="list-inline">
+                  <li><b>High School - NRI Academy:</b> 2010 - 2012</li>
+                  <li><b>School - Vignan Vidyalayam:</b> 2000 - 2010</li>
+                </ul>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                <h2 class="text-uppercase">Project Name</h2>
+                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                <img class="img-fluid d-block mx-auto" src="img/portfolio/04-full.jpg" alt="">
+                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <ul class="list-inline">
+                  <li>Date: January 2017</li>
+                  <li>Client: Lines</li>
+                  <li>Category: Branding</li>
+                </ul>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                <h2 class="text-uppercase">Project Name</h2>
+                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                <img class="img-fluid d-block mx-auto" src="img/portfolio/05-full.jpg" alt="">
+                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <ul class="list-inline">
+                  <li>Date: January 2017</li>
+                  <li>Client: Southwest</li>
+                  <li>Category: Website Design</li>
+                </ul>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6 -->
+  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <!-- Project Details Go Here -->
+                <h2 class="text-uppercase">Project Name</h2>
+                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                <img class="img-fluid d-block mx-auto" src="img/portfolio/06-full.jpg" alt="">
+                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <ul class="list-inline">
+                  <li>Date: January 2017</li>
+                  <li>Client: Window</li>
+                  <li>Category: Photography</li>
+                </ul>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  Close Project</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/agency.min.js"></script>
+
 </body>
 
 </html>
